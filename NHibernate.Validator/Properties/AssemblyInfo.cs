@@ -14,10 +14,10 @@ using System.Security;
 //------------------------------------------------------------------------------
 
 [assembly: CLSCompliantAttribute(true)]
-[assembly: AssemblyTitleAttribute("NHibernate.Validator.ExtraCultures")]
+[assembly: AssemblyTitleAttribute("NHibernate.Validator")]
 [assembly: AssemblyDescriptionAttribute("NHibernate Validator")]
 [assembly: AssemblyCompanyAttribute("NHibernate Community - www.nhforge.org")]
-[assembly: AssemblyProductAttribute("NHibernate.Validator.ExtraCultures")]
+[assembly: AssemblyProductAttribute("NHibernate.Validator")]
 [assembly: AssemblyCopyrightAttribute("Licensed under LGPL.")]
 [assembly: AssemblyVersionAttribute("1.3.2.4000")]
 [assembly: AssemblyInformationalVersionAttribute("1.3.2.4000")]
