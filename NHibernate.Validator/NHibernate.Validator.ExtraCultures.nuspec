@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>NHibernate.Validator.ExtraCultures</id>
+		<version>1.3.2.4000</version>
+		<authors>Evidencias Certificadas, S.L.</authors>
+		<owners>Evidencias Certificadas, S.L.</owners>
+		<projectUrl>https://github.com/evicertia/NHibernate.Validator.ExtraCultures</projectUrl>
+        <license type="expression">MIT</license>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Additional cultures for NHibernate.Validator</description>
+		<copyright>Copyright Evidencias Certificadas, S.L. 2010-2021</copyright>
+	</metadata>
+	<files>
+		 <file src="bin\Release\ca\NHibernate.Validator.resources.dll" target="lib\net45\ca" />
+		 <file src="bin\Release\pt\NHibernate.Validator.resources.dll" target="lib\net45\pt" />
+	</files>
+</package>
