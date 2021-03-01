@@ -1,18 +1,27 @@
-version: 1.0.{build}
+version: 1.3.2.65{build}
 skip_tags: true
 image: Visual Studio 2019
 configuration: Release
-#install:
-#  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/install-nuget-3-3-0.ps1'))
+environment:
+  NHV_VERSION: "1.3.2.4000"
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: $(NHV_VERSION)
+  assembly_file_version: '{version}'
+  assembly_informational_version: "{version}-%APPVEYOR_REPO_COMMIT%"
 before_build:
   - cmd: |
       setlocal enabledelayedexpansion
       setlocal EnableExtensions
 before_package:
-  - cmd: | 
-      mv NHibernate.Validator\bin\Release\ca\NHibernate.Validator.ExtraCultures.resources.dll NHibernate.Validator\bin\Release\ca\NHibernate.Validator.resources.dll
-      mv NHibernate.Validator\bin\Release\pt\NHibernate.Validator.ExtraCultures.resources.dll NHibernate.Validator\bin\Release\pt\NHibernate.Validator.resources.dll
+  - cmd: |
+      nuget pack -Version %APPVEYOR_BUILD_VERSION% "NHibernate.Validator\NHibernate.Validator.pt.nuspec" -Properties "Configuration=Release;Platform=AnyCPU" -OutputDirectory "C:\Users\appveyor\AppData\Local\Temp\1"
+      nuget pack -Version %APPVEYOR_BUILD_VERSION% "NHibernate.Validator\NHibernate.Validator.ca.nuspec" -Properties "Configuration=Release;Platform=AnyCPU" -OutputDirectory "C:\Users\appveyor\AppData\Local\Temp\1"
+      appveyor PushArtifact C:\Users\appveyor\AppData\Local\Temp\1\NHibernate.Validator.ca.%APPVEYOR_BUILD_VERSION%.nupkg
+      appveyor PushArtifact C:\Users\appveyor\AppData\Local\Temp\1\NHibernate.Validator.pt.%APPVEYOR_BUILD_VERSION%.nupkg
 build:
+  project: NHibernate.Validator.sln
   publish_nuget: true
   publish_nuget_symbols: false
   use_snupkg_format: false
